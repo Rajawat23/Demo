@@ -45,7 +45,7 @@ class checkspell(object):
 
 	def nearest_word(self,word):
 		if self.spelling_dict.check(word):
-			return self.meaning(word)
+			return self.meaning(word),word
 
 		x = process.extract(word,self.filelist, limit=20)
 		l=len(word)
@@ -79,5 +79,7 @@ class checkspell(object):
 	def known(self,words): return set(w for w in words if w in self.NWORDS)
 
 	def correct(self,word):
+		if self.spelling_dict.check(word):
+			return self.meaning(word)
 		candidates = self.known([word]) or self.known(self.edits1(word)) or self.known_edits2(word) or [word]
 		return max(candidates, key=self.NWORDS.get)
