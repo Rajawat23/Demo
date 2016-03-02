@@ -33,8 +33,7 @@ def cos(request):
 	print word
 	checkspell_object = checkspell(dict_name='en_US',max_dist=2)
 	cos_distance_suggestions,cos_list = checkspell_object.nearest_word(word)
-	print cos_distance_suggestions
-	result = {'result':list(cos_distance_suggestions,cos_list)}
+	result = {'result':list(cos_list)}
 	return render(request,'index.html',context=result)
 # function to add words
 @csrf_exempt
