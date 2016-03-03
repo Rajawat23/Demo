@@ -45,7 +45,7 @@ class checkspell(object):
 
 	def nearest_word(self,word):
 		if self.spelling_dict.check(word):
-			return self.meaning(word),word
+			return self.meaning(word),False
 
 		x = process.extract(word,self.filelist, limit=20)
 		l=len(word)
